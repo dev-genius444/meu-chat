@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Chat - Login</title>
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0b0b;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle at top right, #282d2d 0%, #0a0b0b 100%);
+        }
+
+        /* Container do App (Estilo Celular) */
+        .app-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background-color: #0a0b0b;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        /* --- LOGO / TOPO --- */
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            color: #8a8a8a;
+            margin-top: 8px;
+        }
+
+        /* --- BOTÕES SOCIAIS LADO A LADO --- */
+        .social-login-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-social {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(40, 45, 45, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-social:hover {
+            background: rgba(60, 60, 60, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .social-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* --- DIVISOR "OU" --- */
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .divider:not(:empty)::before { margin-right: .5em; }
+        .divider:not(:empty)::after { margin-left: .5em; }
+
+        /* --- FORMULÁRIO DE INPUTS --- */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-size: 12px;
+            color: #8a8a8a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-field {
+            width: 100%;
+            background: rgba(40, 45, 45, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: #00ffcc;
+            background: rgba(40, 45, 45, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
+        }
+
+        /* --- BOTÃO PRINCIPAL DE LOGIN --- */
+        .btn-login {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            background: #00ffcc;
+            color: #0a0b0b;
+            border: none;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 4px 20px rgba(0, 255, 204, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-login:hover {
+            background: #00e6b8;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 25px rgba(0, 255, 204, 0.3);
+        }
+
+        .btn-login:active {
+            transform: translateY(1px);
+        }
+
+        /* Link de Cadastro Alternativo */
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #8a8a8a;
+        }
+
+        .register-link a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 900px) {
+            body {
+                align-items: flex-start;
+            }
+            .app-container {
+                max-width: 100%;
+                height: 100vh;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="login-header">
+            <h1>MeuChat</h1>
+            <p>Seja bem-vindo de volta!</p>
+        </header>
+
+        <div class="social-login-container">
+            <button class="btn-social" onclick="loginSocial('Google')">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l3.227-3.111C18.29 1.95 15.54 1 12.24 1 6.16 1 1.2 5.93 1.2 12s4.96 11 11.04 11c6.35 0 10.57-4.44 10.57-10.75 0-.72-.08-1.27-.17-1.72/*h-10.4z*/"/>
+                    <path fill="#FBBC05" d="M1.2 12c0 1.54.3 2.99.85 4.32l3.54-2.75c-.15-.49-.24-1.02-.24-1.57s.09-1.08.24-1.57L2.05 7.68C1.5 9.01 1.2 10.46 1.2 12z"/>
+                    <path fill="#4285F4" d="M12.24 5.396c1.69 0 2.83.73 3.48 1.34l2.61-2.52C16.73 2.87 14.7 2.1 12.24 2.1c-4.04 0-7.46 2.45-8.89 5.98l3.54 2.75c.84-2.52 3.19-4.434 6.35-4.434z"/>
+                    <path fill="#34A853" d="M12.24 18.604c-3.16 0-5.51-1.91-6.35-4.43l-3.55 2.76c1.43 3.53 4.85 5.98 8.89 5.98 3.3 0 6.05-.95 7.95-2.59l-3.21-2.49c-.74.49-1.68.77-2.74.77z"/>
+                </svg>
+                <span>Google</span>
+            </button>
+
+            <button class="btn-social" onclick="loginSocial('Apple')">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="#ffffff">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.52-.64.74-1.2 1.88-1.05 2.99 1.11.09 2.24-.55 3-1.45z"/>
+                </svg>
+                <span>Apple</span>
+            </button>
+        </div>
+
+        <div class="divider">ou</div>
+
+        <form class="form-container" onsubmit="realizarLogin(event)">
+            
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" class="input-field" placeholder="seuemail@exemplo.com" required autocomplete="username">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" class="input-field" placeholder="Digite sua senha" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="btn-login">Entrar</button>
+        </form>
+
+        <div class="register-link">
+            Não tem uma conta? <a href="#">Cadastre-se</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Função para simular o comportamento de clique no login padrão
+        function realizarLogin(event) {
+            event.preventDefault(); // Impede a página de recarregar
+            
+            const email = document.getElementById('email').value;
+            
+            // Simulação de autenticação bem sucedida: leva para a lista de conversas principal
+            if(email) {
+                window.location.href = "index.html";
+            }
+        }
+
+        // Função para simular cliques nos botões sociais
+        function loginSocial(plataforma) {
+            alert(`Conectando via conta da ${plataforma}...`);
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
