@@ -1,3 +1,35 @@
+/* --- VARIÁVEIS DE COR PADRÃO (DARK MODE) --- */
+body {
+    --bg-main: radial-gradient(circle at top left, #111111 0%, #000000 100%);
+    --bg-container: #000000;
+    --text-primary: #F5F7FF;
+    --glass-bg: rgba(26, 26, 26, 0.4);
+    --glass-border: rgba(245, 247, 257, 0.08);
+    --info-row-bg: rgba(26, 26, 26, 0.4);
+    --info-row-border: rgba(245, 247, 257, 0.04);
+    --edit-photo-bg: #111111;
+    --edit-photo-border: #1A1A1A;
+    --icon-fill: #F5F7FF;
+
+    background: var(--bg-main);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* --- VARIÁVEIS PARA O LIGHT MODE --- */
+body.light-mode {
+    --bg-main: radial-gradient(circle at top left, #EEF2F7 0%, #F8FAFC 100%);
+    --bg-container: #FFFFFF;
+    --text-primary: #111111;
+    --glass-bg: rgba(240, 244, 248, 0.65);
+    --glass-border: rgba(17, 17, 17, 0.08);
+    --info-row-bg: rgba(238, 242, 247, 0.8);
+    --info-row-border: rgba(17, 17, 17, 0.06);
+    --edit-photo-bg: #FFFFFF;
+    --edit-photo-border: #E2E8F0;
+    --icon-fill: #111111;
+}
+
 /* --- ESTILOS GERAIS --- */
 * {
     margin: 0;
@@ -7,14 +39,10 @@
 }
 
 body {
-    background-color: #000000; /* Preto absoluto solicitado */
-    color: #F5F7FF; /* Branco puro para reflexos/texto limpo */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* Gradiente radial combinando o grafite ao preto absoluto de fundo */
-    background: radial-gradient(circle at top left, #111111 0%, #000000 100%);
 }
 
 /* Container do App */
@@ -22,19 +50,21 @@ body {
     width: 100%;
     max-width: 450px;
     height: 100vh;
-    background-color: #000000;
+    background-color: var(--bg-container);
     display: flex;
     flex-direction: column;
     position: relative;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease;
 }
 
 /* --- GLASSMORPHISM --- */
 .glass-effect {
-    background: rgba(26, 26, 26, 0.4) !important; /* Base cinza escuro translúcido */
+    background: var(--glass-bg) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
-    border-bottom: 1px solid rgba(245, 247, 257, 0.08) !important; /* Linha de brilho sutil */
+    border-bottom: 1px solid var(--glass-border) !important;
+    transition: background 0.3s, border-color 0.3s;
 }
 
 /* --- HEADER --- */
@@ -57,13 +87,19 @@ body {
 }
 
 .back-btn:hover {
-    transform: translateX(-2px); /* Efeito sutil ao passar o mouse */
+    transform: translateX(-2px);
 }
 
 .profile-header h2 {
     font-size: 18px;
     font-weight: 600;
-    color: #F5F7FF;
+    color: var(--text-primary);
+    transition: color 0.3s;
+}
+
+.back-btn .svg-icon {
+    fill: var(--icon-fill);
+    transition: fill 0.3s;
 }
 
 .svg-icon {
@@ -81,6 +117,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    background-color: var(--bg-container);
+    transition: background-color 0.3s;
 }
 
 /* Área da Foto de Perfil Grande */
@@ -94,17 +132,15 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    /* Avatar com o Gradiente Principal de 4 cores da marca */
     background: linear-gradient(90deg, #C56DFF 0%, #8B5CFF 35%, #5E8CFF 70%, #49C7FF 100%);
     border: 2px solid rgba(245, 247, 257, 0.2);
-    /* Glow roxo (#7A5CFF) sutil para dar profundidade */
     box-shadow: 0 0 25px rgba(122, 92, 255, 0.35);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 64px;
     font-weight: bold;
-    color: #000000; /* Letra escura para contraste ideal sobre o gradiente aceso */
+    color: #000000;
 }
 
 /* Botão de Câmera/Editar Foto */
@@ -115,26 +151,26 @@ body {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #111111; /* Cinza grafite */
-    border: 1px solid #1A1A1A; /* Cinza escuro */
+    background: var(--edit-photo-bg);
+    border: 1px solid var(--edit-photo-border);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
 
 .edit-photo-btn:hover {
     transform: scale(1.08);
-    border-color: #49C7FF; /* Borda acende em azul */
-    box-shadow: 0 0 15px rgba(85, 199, 255, 0.3); /* Glow Azul */
+    border-color: #49C7FF;
+    box-shadow: 0 0 15px rgba(85, 199, 255, 0.3);
 }
 
 .edit-photo-btn .svg-icon {
     width: 18px;
     height: 18px;
-    fill: #49C7FF; /* Ícone com o azul principal */
+    fill: #49C7FF;
 }
 
 /* --- CAMPOS DE INFORMAÇÃO --- */
@@ -150,14 +186,14 @@ body {
     align-items: flex-start;
     gap: 20px;
     padding: 14px 16px;
-    background: rgba(26, 26, 26, 0.4); /* Fundo com tom escuro translúcido */
+    background: var(--info-row-bg);
     border-radius: 16px;
-    border: 1px solid rgba(245, 247, 257, 0.04);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--info-row-border);
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
 .info-row:hover {
-    border-color: rgba(139, 92, 255, 0.2); /* Sutil reflexo roxo no hover da linha */
+    border-color: rgba(139, 92, 255, 0.3);
 }
 
 .info-icon-box {
@@ -165,8 +201,8 @@ body {
 }
 
 .info-icon-box .svg-icon {
-    fill: #8B5CFF; /* Ícones laterais ganham identidade com o Roxo Principal */
-    opacity: 0.7;
+    fill: #8B5CFF;
+    opacity: 0.8;
     width: 20px;
     height: 20px;
 }
@@ -180,7 +216,7 @@ body {
 
 .info-label {
     font-size: 12px;
-    color: #4DA3FF; /* Azul neon para as labels limpas */
+    color: #4DA3FF;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -188,16 +224,17 @@ body {
 
 .info-value {
     font-size: 15px;
-    color: #F5F7FF;
+    color: var(--text-primary);
     font-weight: 500;
+    transition: color 0.3s;
 }
 
 .info-subtext {
     font-size: 11px;
-    color: #C78BFF; /* Subtextos com acabamento em lilás suave */
+    color: #C78BFF;
     line-height: 1.3;
     margin-top: 2px;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .edit-value-btn {
@@ -215,7 +252,7 @@ body {
 .edit-value-btn .svg-icon {
     width: 18px;
     height: 18px;
-    fill: #49C7FF; /* Lápis de edição com o azul principal */
+    fill: #49C7FF;
 }
 
 /* --- CONTAINER DO BOTÃO SAIR --- */
@@ -227,10 +264,9 @@ body {
     padding-bottom: 20px;
 }
 
-/* Botão Sair com visual Premium, mantendo o tom vermelho de alerta, mas integrado ao tema escuro */
 .btn-sair {
-    background: rgba(255, 59, 92, 0.05); /* Fundo sutilmente avermelhado */
-    color: #FF3B5C; /* Vermelho vibrante e moderno para alerta */
+    background: rgba(255, 59, 92, 0.05);
+    color: #FF3B5C;
     border: 1px solid rgba(255, 59, 92, 0.3);
     padding: 12px 30px;
     font-size: 15px;
@@ -238,14 +274,14 @@ body {
     border-radius: 25px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 59, 92, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 59, 92, 0.05);
     width: 85%;
 }
 
 .btn-sair:hover {
     background: #FF3B5C;
-    color: #000000; /* Inverte a cor para preto absoluto, gerando alto contraste no hover */
-    box-shadow: 0 0 25px rgba(255, 59, 92, 0.5); /* Glow aceso de alerta */
+    color: #000000;
+    box-shadow: 0 0 25px rgba(255, 59, 92, 0.5);
     transform: translateY(-2px);
     border-color: #FF3B5C;
 }

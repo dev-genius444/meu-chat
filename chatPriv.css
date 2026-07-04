@@ -1,0 +1,255 @@
+/* --- VARIÁVEIS DE COR PADRÃO (DARK MODE) --- */
+body {
+    --bg-main: radial-gradient(circle at bottom left, #111111 0%, #000000 100%);
+    --bg-container: #000000;
+    --text-primary: #F5F7FF;
+    --glass-bg: rgba(26, 26, 26, 0.4);
+    --glass-border: rgba(245, 247, 255, 0.08);
+    --msg-received: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(17, 17, 17, 0.4) 100%);
+    --msg-received-border: rgba(245, 247, 255, 0.05);
+    --input-bg: rgba(17, 17, 17, 0.7);
+    --input-border: rgba(245, 247, 255, 0.1);
+    --icon-fill: #F5F7FF;
+    --placeholder: rgba(245, 247, 255, 0.35);
+
+    background: var(--bg-main);
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* --- VARIÁVEIS PARA O LIGHT MODE --- */
+body.light-mode {
+    --bg-main: radial-gradient(circle at bottom left, #EEF2F7 0%, #F8FAFC 100%);
+    --bg-container: #FFFFFF;
+    --text-primary: #111111;
+    --glass-bg: rgba(240, 244, 248, 0.65);
+    --glass-border: rgba(17, 17, 17, 0.08);
+    --msg-received: linear-gradient(135deg, rgba(238, 242, 247, 0.9) 0%, rgba(220, 225, 230, 0.6) 100%);
+    --msg-received-border: rgba(17, 17, 17, 0.05);
+    --input-bg: rgba(238, 242, 247, 0.8);
+    --input-border: rgba(17, 17, 17, 0.1);
+    --icon-fill: #111111;
+    --placeholder: rgba(17, 17, 17, 0.4);
+}
+
+/* --- ESTILOS GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container do App */
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
+    background-color: var(--bg-container);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 40px rgba(122, 92, 255, 0.15);
+    transition: background-color 0.3s ease;
+}
+
+/* --- EFEITO LIQUID GLASS PREMIUM --- */
+.liquid-glass {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* --- HEADER --- */
+.chat-header {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #C56DFF 0%, #8B5CFF 35%, #5E8CFF 70%, #49C7FF 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    box-shadow: 0 0 15px rgba(139, 92, 255, 0.3);
+}
+
+.user-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.3s;
+}
+
+.user-info p {
+    font-size: 12px;
+    color: #4DA3FF; 
+    font-weight: 500;
+}
+
+.back-btn .svg-icon {
+    fill: var(--icon-fill);
+    transition: fill 0.3s;
+}
+
+/* --- ÁREA DE MENSAGENS --- */
+.chat-messages {
+    flex: 1;
+    padding: 20px 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--bg-container);
+    transition: background 0.3s ease;
+}
+
+/* --- BALÕES ESTILO LIQUID GLASS --- */
+.message {
+    max-width: 78%;
+    padding: 12px 16px;
+    font-size: 14.5px;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Balão Recebido (Utiliza variáveis dinâmicas) */
+.message.received {
+    background: var(--msg-received);
+    border: 1px solid var(--msg-received-border);
+    color: var(--text-primary);
+    align-self: flex-start;
+    border-radius: 20px 20px 20px 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* Balão Enviado (Mantém o degrade premium da sua marca) */
+.message.sent {
+    background: linear-gradient(135deg, rgba(139, 92, 255, 0.25) 0%, rgba(73, 199, 255, 0.15) 100%);
+    border: 1px solid rgba(199, 139, 255, 0.3);
+    color: var(--text-primary);
+    align-self: flex-end;
+    border-radius: 20px 20px 4px 20px;
+    box-shadow: 0 4px 20px rgba(122, 92, 255, 0.15);
+    transition: color 0.3s;
+}
+
+.message-time {
+    font-size: 10px;
+    color: var(--placeholder);
+    text-align: right;
+    margin-top: 5px;
+    display: block;
+    transition: color 0.3s;
+}
+
+/* --- ÁREA DO INPUT --- */
+.chat-input-area {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    border-top: 1px solid var(--glass-border);
+    transition: border-color 0.3s;
+}
+
+.input-wrapper {
+    flex: 1;
+    background: var(--input-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--input-border);
+    border-radius: 24px;
+    padding: 2px 6px 2px 14px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.input-wrapper input {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px 0;
+    color: var(--text-primary);
+    outline: none;
+    font-size: 14.5px;
+    transition: color 0.3s;
+}
+
+.input-wrapper input::placeholder {
+    color: var(--placeholder);
+    transition: color 0.3s;
+}
+
+/* Botão Enviar */
+.send-btn {
+    background: linear-gradient(90deg, #C56DFF 0%, #8B5CFF 35%, #5E8CFF 70%, #49C7FF 100%);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 12px rgba(85, 199, 255, 0.3);
+}
+
+.send-btn:active {
+    transform: scale(0.92);
+}
+
+.send-btn .svg-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+    fill: #FFFFFF;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media screen and (max-width: 900px) {
+    body {
+        align-items: flex-start;
+    }
+
+    .app-container {
+        max-width: 100%;
+        height: 100vh;
+        box-shadow: none;
+    }
+}
