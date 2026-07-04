@@ -3,213 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./cadastre-se.css">
     <title>Meu Chat - Cadastro</title>
-    <style>
-        /* --- ESTILOS GERAIS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
 
-        body {
-            background-color: #0a0b0b;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: radial-gradient(circle at bottom left, #282d2d 0%, #0a0b0b 100%);
-            overflow: hidden;
-        }
-
-        /* Container do App */
-        .app-container {
-            width: 100%;
-            max-width: 450px;
-            height: 100vh;
-            background-color: #0a0b0b;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-        }
-
-        /* --- LOGO / TOPO --- */
-        .register-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .register-header h1 {
-            font-size: 32px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #00ffcc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .register-header p {
-            font-size: 14px;
-            color: #8a8a8a;
-            margin-top: 5px;
-        }
-
-        /* --- BOTÕES SOCIAIS --- */
-        .social-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .btn-social {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 12px;
-            background: rgba(40, 45, 45, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-social:hover {
-            border-color: #00ffcc;
-            background: rgba(0, 255, 204, 0.05);
-        }
-
-        .social-icon {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* --- DIVISOR --- */
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 25px;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .divider:not(:empty)::before { margin-right: .5em; }
-        .divider:not(:empty)::after { margin-left: .5em; }
-
-        /* --- FORMULÁRIO --- */
-        .form-scroll {
-            overflow-y: auto;
-            padding-right: 5px;
-        }
-
-        /* Estilização da barra de rolagem */
-        .form-scroll::-webkit-scrollbar { width: 4px; }
-        .form-scroll::-webkit-scrollbar-thumb { background: #3c3c3c; border-radius: 10px; }
-
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .input-group label {
-            font-size: 11px;
-            color: #8a8a8a;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding-left: 5px;
-        }
-
-        .input-field {
-            width: 100%;
-            background: rgba(40, 45, 45, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #ffffff;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .input-field:focus {
-            border-color: #00ffcc;
-            background: rgba(40, 45, 45, 0.5);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
-        }
-
-        /* --- BOTÃO CRIAR CONTA --- */
-        .btn-register {
-            width: 100%;
-            padding: 14px;
-            border-radius: 12px;
-            background: #00ffcc;
-            color: #0a0b0b;
-            border: none;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
-            transition: all 0.2s ease;
-        }
-
-        .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4);
-        }
-
-        /* LINK PARA LOGIN */
-        .login-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #8a8a8a;
-        }
-
-        .login-link a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        @media screen and (max-width: 900px) {
-            .app-container { max-width: 100%; height: 100vh; box-shadow: none; }
-        }
-    </style>
+    
 </head>
 <body>
 
     <div class="app-container">
         
         <header class="register-header">
-            <h1>MeuChat</h1>
+            <div class="titulo">
+                <img src="./nyvo.png" alt="" width="50">
+                <h1>NYVO</h1>
+            </div>
+
             <p>Crie sua conta em poucos segundos</p>
         </header>
 
@@ -264,27 +72,6 @@
 
     </div>
 
-    <script>
-        function validarCadastro(event) {
-            event.preventDefault();
-            
-            const senha = document.getElementById('senha').value;
-            const confirmar = document.getElementById('confirmarSenha').value;
-
-            if (senha !== confirmar) {
-                alert("As senhas não coincidem! Tente novamente.");
-                return;
-            }
-
-            // Simulação de sucesso
-            alert("Conta criada com sucesso! Bem-vindo ao MeuChat.");
-            window.location.href = "index.html";
-        }
-
-        function socialAuth(rede) {
-            alert(`Iniciando cadastro via ${rede}...`);
-            window.location.href = "index.html";
-        }
-    </script>
+    <script src="cadastre-se.js"></script>
 </body>
 </html>
