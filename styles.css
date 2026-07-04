@@ -333,6 +333,82 @@ body {
     display: block;
 }
 
+/* --- NOVA APP TAB BAR (ESTILO VISIONOS / LIQUID GLASS FLUTUANTE) --- */
+.app-tab-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 62px;
+    z-index: 10;
+    
+    /* Faz a barra flutuar sobre o conteúdo */
+    position: absolute;
+    bottom: 15px; /* Afastada da borda inferior */
+    left: 12px;
+    right: 12px;
+    
+    /* Design moderno arredondado */
+    border-radius: 20px;
+    padding: 0 10px;
+    
+    /* Contorno de luz suave e sombra profunda */
+    border: 1px solid rgba(245, 247, 257, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(245, 247, 257, 0.4); /* Cor apagada para itens inativos */
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 4px;
+    flex: 1;
+    padding: 6px 0;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ícones SVG dentro da Tab Bar */
+.tab-item .svg-icon {
+    fill: rgba(245, 247, 257, 0.4);
+    opacity: 0.7;
+    width: 22px;
+    height: 22px;
+    transition: fill 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* --- ESTADO ATIVO (Aba que você está navegando no momento) --- */
+.tab-item.active {
+    color: #C78BFF; /* Texto acende em lilás premium */
+}
+
+.tab-item.active .svg-icon {
+    fill: #8B5CFF; /* Ícone ganha o Roxo Principal da marca */
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 255, 0.6)); /* Glow neon no ícone */
+}
+
+/* --- FEEDBACK AO PASSAR O MOUSE --- */
+.tab-item:hover {
+    color: #49C7FF; /* Transiciona para o azul principal */
+}
+
+.tab-item:hover .svg-icon {
+    fill: #49C7FF;
+    opacity: 1;
+}
+
+/* --- AJUSTE NA LISTA DE CHATS --- */
+/* Certifique-se de dar espaço suficiente para a lista rolar sem ficar escondida atrás da Tab Bar flutuante */
+.chats-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 95px; /* Margem de segurança aumentada para a tab bar flutuante */
+}
+
 /* --- RESPONSIVIDADE --- */
 @media screen and (max-width: 900px) {
     body { align-items: flex-start; }

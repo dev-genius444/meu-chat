@@ -1,0 +1,459 @@
+/* --- ESTILOS GERAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #000000; /* Preto absoluto */
+    color: #F5F7FF; /* Branco premium */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: radial-gradient(circle at top right, #111111 0%, #000000 100%);
+    overflow: hidden;
+}
+
+/* Container do App (Viewport Mobile no Desktop) */
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+}
+
+/* --- GLASSMORPHISM --- */
+.glass-effect {
+    background: rgba(26, 26, 26, 0.4) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(245, 247, 257, 0.08) !important;
+}
+
+/* --- HEADER --- */
+.header {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    z-index: 10;
+}
+
+.header-titulo {
+    font-size: 22px;
+    font-weight: 700;
+    color: #F5F7FF;
+}
+
+.header-icones {
+    display: flex;
+    align-items: center;
+}
+
+.icon-botao {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.svg-icon {
+    width: 22px;
+    height: 22px;
+    fill: #F5F7FF;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.icon-botao:hover .svg-icon {
+    opacity: 1;
+    fill: #49C7FF;
+}
+
+/* --- ÁREA ROLÁVEL --- */
+.scroll-conteudo {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 30px;
+}
+
+.scroll-conteudo::-webkit-scrollbar {
+    width: 4px;
+}
+.scroll-conteudo::-webkit-scrollbar-thumb {
+    background: #1A1A1A;
+    border-radius: 10px;
+}
+
+/* --- CRIAR COMUNIDADE --- */
+.criar-comunidade-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 16px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.criar-comunidade-row:hover {
+    background: rgba(26, 26, 26, 0.3);
+}
+
+.icon-criar-fundo {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #C56DFF 0%, #8B5CFF 35%, #5E8CFF 70%, #49C7FF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(122, 92, 255, 0.4);
+}
+
+.criar-texto-container {
+    margin-left: 14px;
+}
+
+.criar-titulo {
+    font-size: 16px;
+    font-weight: 600;
+    color: #49C7FF; /* Azul Principal destacando a ação */
+}
+
+/* DIVISOR INTERNO */
+.divisor {
+    height: 8px;
+    width: 100%;
+    background-color: #111111; /* Cinza Grafite */
+}
+
+/* --- CARD DA COMUNIDADE --- */
+.comunidade-card {
+    padding-top: 14px;
+    background: transparent;
+    border-bottom: 1px solid #1A1A1A;
+}
+
+.comunidade-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 14px;
+}
+
+.avatar-comunidade {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: rgba(139, 92, 255, 0.1); /* Toque de Roxo transparente */
+    border: 1px solid rgba(139, 92, 255, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-icon-brand {
+    width: 26px;
+    height: 26px;
+    fill: #8B5CFF; /* Ícone ganha a cor do Roxo Principal */
+    filter: drop-shadow(0 0 5px rgba(139, 92, 255, 0.5));
+}
+
+.comunidade-info {
+    flex: 1;
+    margin-left: 14px;
+}
+
+.comunidade-nome {
+    font-size: 16px;
+    font-weight: 700;
+    color: #F5F7FF;
+}
+
+.comunidade-descricao {
+    font-size: 13px;
+    color: #C78BFF; /* Detalhes secundários em lilás */
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+/* --- SUBGRUPOS --- */
+.subgrupos-container {
+    padding-left: 16px;
+}
+
+.subgrupo-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px 12px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.subgrupo-item:hover {
+    background: rgba(26, 26, 26, 0.2);
+}
+
+.avatar-subgrupo {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #111111; /* Grafite */
+    border: 1px solid #1A1A1A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.svg-icon-gray {
+    width: 20px;
+    height: 20px;
+    fill: rgba(245, 247, 257, 0.6);
+}
+
+.subgrupo-info-agrupada {
+    flex: 1;
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.subgrupo-linha-topo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subgrupo-nome {
+    font-size: 15px;
+    font-weight: 600;
+    color: #F5F7FF;
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.subgrupo-horario {
+    font-size: 12px;
+    color: #8B5CFF; /* Horário no roxo aceso */
+}
+
+.subgrupo-ultima-msg {
+    font-size: 13px;
+    color: rgba(245, 247, 257, 0.5);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+/* --- BOTÃO VER TUDO --- */
+.btn-ver-tudo {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px 0 14px 52px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-ver-tudo span {
+    font-size: 14px;
+    color: #49C7FF; /* Azul principal */
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.svg-arrow {
+    width: 20px;
+    height: 20px;
+    fill: #49C7FF;
+    transition: transform 0.2s;
+}
+
+.btn-ver-tudo:hover .svg-arrow {
+    transform: translateX(3px); /* Pequeno feedback ao passar o mouse */
+}
+
+/* --- FOOTBAR (RODAPÉ DE NAVEGAÇÃO) --- */
+.navigation-footbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Linha de luz superior sutil */
+    border-top: 1px solid rgba(245, 247, 257, 0.08) !important; 
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(245, 247, 257, 0.4); /* Texto semi-transparente quando inativo */
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 5px;
+    flex: 1;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove o flash cinza ao tocar no mobile */
+}
+
+/* Modifica a cor do ícone SVG interno por padrão */
+.nav-item .svg-icon {
+    fill: rgba(245, 247, 257, 0.4);
+    opacity: 0.7;
+    width: 22px;
+    height: 22px;
+    transition: fill 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* --- ESTADO ATIVO (Aba Selecionada) --- */
+/* O texto ganha a cor Lilás/Roxo claro */
+.nav-item.active {
+    color: #C78BFF; 
+}
+
+/* O ícone acende no Roxo Principal e ganha o efeito Neon/Glow */
+.nav-item.active .svg-icon {
+    fill: #8B5CFF;
+    opacity: 1;
+    /* Efeito de brilho focado no formato do ícone */
+    filter: drop-shadow(0 0 5px rgba(139, 92, 255, 0.6)); 
+}
+
+/* --- FEEDBACK VISUAL NO HOVER (DESKTOP) --- */
+.nav-item:hover {
+    color: #49C7FF; /* Transiciona para o azul principal ao passar o mouse */
+}
+
+.nav-item:hover .svg-icon {
+    fill: #49C7FF;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   NOVA APP TAB BAR (ESTILO VISIONOS / LIQUID GLASS FLUTUANTE)
+   ========================================================================== */
+.app-tab-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 62px;
+    z-index: 10;
+    
+    /* Faz a barra flutuar de forma absoluta sobre o contêiner do app */
+    position: absolute;
+    bottom: 15px; /* Afastamento elegante da borda inferior */
+    left: 12px;
+    right: 12px;
+    
+    /* Cantos arredondados premium */
+    border-radius: 20px;
+    padding: 0 10px;
+    
+    /* Linha de contorno de luz sutil e sombra projetada profunda */
+    border: 1px solid rgba(245, 247, 257, 0.08) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(245, 247, 257, 0.4); /* Tom opaco para abas inativas */
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 4px;
+    flex: 1;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove o flash cinza nativo do mobile ao tocar */
+}
+
+/* Customização dos Ícones SVG internos por padrão */
+.tab-item .svg-icon {
+    fill: rgba(245, 247, 257, 0.4);
+    opacity: 0.7;
+    width: 22px;
+    height: 22px;
+    transition: fill 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+}
+
+/* --------------------------------------------------------------------------
+   ESTADO ATIVO (Aba em que o usuário se encontra)
+   -------------------------------------------------------------------------- */
+/* O texto acende em um Lilás/Roxo Claro */
+.tab-item.active {
+    color: #C78BFF; 
+}
+
+/* O ícone ganha a cor Roxa Principal e o efeito Neon/Glow focado */
+.tab-item.active .svg-icon {
+    fill: #8B5CFF;
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 255, 0.6)); 
+}
+
+/* --------------------------------------------------------------------------
+   EFEITO HOVER (Para navegação em Desktop)
+   -------------------------------------------------------------------------- */
+.tab-item:hover {
+    color: #49C7FF; /* Transiciona suavemente para o azul principal */
+}
+
+.tab-item:hover .svg-icon {
+    fill: #49C7FF;
+    opacity: 1;
+}
+
+/* ==========================================================================
+   AJUSTE DE ROLAGEM DO CONTEÚDO (Não remover!)
+   ========================================================================== */
+/* Garante que os últimos cards da lista não fiquem escondidos atrás da Tab Bar */
+.scroll-conteudo {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 95px; /* Margem de segurança calculada para a barra flutuante */
+}
+
+/* --- RESPONSIVIDADE --- */
+@media screen and (max-width: 900px) {
+    body {
+        align-items: flex-start;
+    }
+    .app-container {
+        max-width: 100%;
+        height: 100vh;
+        box-shadow: none;
+    }
+}
